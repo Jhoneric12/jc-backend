@@ -20,7 +20,7 @@ class SignUpController extends Controller
         Storage::put('usersOTP', $usersOTP);
 
         $content = [
-            'subject' => "JC's Skin Works",
+            'subject' => "Account Verificaton",
             'body' => 'This is your One-Time Pin (OTP) ' . $usersOTP 
         ];
 
@@ -37,16 +37,14 @@ class SignUpController extends Controller
         $generatedOTP = Storage::get('usersOTP');
     
         if (!$generatedOTP) {
-            // OTP doesn't exist in storage
             return response()->json([
                 'message' => 'No OTP found. Please request an OTP first.'
             ]);
         }
     
         if ($request->otp == $generatedOTP) {
-
-            // Rules
              try {
+                // Rules
                 $validatedData = $request->validate([
                     'otp' => 'required|numeric',
                     'email_address' => 'required|email',
