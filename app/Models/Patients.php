@@ -24,7 +24,7 @@ class Patients extends Model
         'email_address',
         'password',
         'otp',
-        'photo'
+        'photo',
+        'isActive'
     ];
-
 }

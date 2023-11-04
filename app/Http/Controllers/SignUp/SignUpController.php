@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SignUp;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -67,7 +68,7 @@ class SignUpController extends Controller
                 $patient->otp = $validatedData['otp'];
                 $patient->email_address = $validatedData['email_address'];
                 $patient->username = $validatedData['username'];
-                $patient->password = bcrypt($validatedData['password']);
+                $patient->password = Hash::make($validatedData['password']);
                 $patient->first_name = strtoupper($validatedData['first_name']);
                 $patient->middle_name = strtoupper($validatedData['middle_name']);
                 $patient->last_name = strtoupper($validatedData['last_name']);
@@ -78,6 +79,7 @@ class SignUpController extends Controller
                 $patient->home_address = strtoupper($validatedData['home_address']);
                 $patient->contact_number = $validatedData['contact'];
                 $patient->religion = strtoupper($validatedData['religion']);
+                $patient->isActive = 1;
                 $patient->save();
     
                 Storage::delete('usersOTP');
