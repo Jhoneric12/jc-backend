@@ -60,7 +60,7 @@ class SignUpController extends Controller
                     'gender' => 'required',
                     'home_address' => 'required',
                     'contact' => 'required|max:11',
-                    'religion' => 'required'
+                    'religion' => 'nullable'
                 ]);
                 
                 // Store patient data
