@@ -2,7 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+// Login and SignUp
 use App\Http\Controllers\SignUp\SignUpController;
+use App\Http\Controllers\SignUp\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Login and SignUp
+// SignUp
 Route::post('/send-mail-otp', [SignUpController::class, 'SendEmailOTP']);
 Route::post('/enter-mail-otp', [SignUpController::class, 'VerifyOTP']);
+
+// LogIn and Logout
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');

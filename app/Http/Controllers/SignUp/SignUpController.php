@@ -21,7 +21,7 @@ class SignUpController extends Controller
         Storage::put('usersOTP', $usersOTP);
 
         $content = [
-            'subject' => "Account Verificaton",
+            'subject' => "OTP Verificaton",
             'body' => 'This is your One-Time Pin (OTP) ' . $usersOTP 
         ];
 
