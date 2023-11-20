@@ -22,7 +22,7 @@ class LoginController extends Controller
 
         if (!$patient || !Auth::guard('patients')->attempt(['username' => $request->username, 'password' => $request->password])) {
             return response()->json([
-                'message' => 'Invalid Credentials'
+                'message' => 'Invalid Credentials, Try again'
             ], 401);
         }
         else {
