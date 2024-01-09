@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 // Login and SignUp
 use App\Http\Controllers\SignUp\SignUpController;
 use App\Http\Controllers\SignUp\LoginController;
+use App\Http\Controllers\Login\AdminLogInController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/send-mail-otp', [SignUpController::class, 'SendEmailOTP']);
 Route::post('/enter-mail-otp', [SignUpController::class, 'VerifyOTP']);
 
-// LogIn and Logout
+// Patient LogIn and Logout
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');
+
+// Admin Login
+Route::post('/admin-login', [AdminLogInController::class, 'AdminLogin']);

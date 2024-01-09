@@ -42,6 +42,11 @@ return [
             'provider' => 'patients',
         ],
 
+        'admins' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
         // 'api' => [
         //     'driver' => 'token',
         //     'provider' => 'patients',
@@ -72,6 +77,11 @@ return [
         'patients' => [
             'driver' => 'eloquent',
             'model' => App\Models\Patients::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [
